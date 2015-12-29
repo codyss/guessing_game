@@ -56,7 +56,7 @@ function checkGuess(){
         $('#guessanswer').css('visibility','visible');
         $('#guessanswer').text("You Win!");
         $('#trophy').css('visibility','visible');
-        $('trophy').effect('bounce', {times:3},500); 
+        $('#trophy').effect('bounce', {times:3},500); 
     } else if (guesses.indexOf(playersGuess)>=0){
         $('#guessanswer').css('visibility','visible');
         $('#guessanswer').text("You already guessed that number!");
@@ -104,11 +104,13 @@ $(document).ready(function() {
 
     $('#num-input').keypress(function(e) {
         if(e.which == 13) {
+            playersGuessSubmission();
             checkGuess();
         }
     });
 
     $('.main-box').on('click', 'button', function () {
+        playersGuessSubmission();
         checkGuess();
     });    
 });
