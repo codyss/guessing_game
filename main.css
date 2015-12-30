@@ -41,6 +41,10 @@
     margin: auto;
 }
 
+#guess-counter {
+    text-align: center;
+    color: red;
+}
 
 .again-hint-box {
     margin: auto;
