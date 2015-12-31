@@ -134,6 +134,7 @@ Game.prototype.playAgain = function() {
 /* **** Event Listeners/Handlers ****  */
 $(document).ready(function() {
     var newGame = new Game();
+    newGame.winningNumberGenerator();
     $('#hintbutton').on('click', function () {
         newGame.provideHint();
     });
@@ -144,13 +145,13 @@ $(document).ready(function() {
 
     $('#num-input').keypress(function(e) {
         if(e.which == 13) {
-            newGame.playersGuessSubmission();
+            newGame.playersGuessGenerator();
             newGame.checkGuess();
         }
     });
 
     $('.main-box').on('click', 'button', function () {
-        newGame.playersGuessSubmission();
+        newGame.playersGuessGenerator();
         newGame.checkGuess();
     });    
 });
