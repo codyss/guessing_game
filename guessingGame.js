@@ -60,7 +60,11 @@ Game.prototype.guessMessage = function() {
 
 
 Game.prototype.checkGuess = function() { 
-    if(this.playersGuess === this.winningNumber) {
+     if (this.numberOfGuesses >= 4 && this.playersGuess !== this.winningNumber) {
+        this.numberOfGuesses++;
+        $('#guessanswer').css('visibility','visible');
+        $('#guessanswer').text("No Luck This Time. Play Again!");
+    } else if(this.playersGuess === this.winningNumber) {
         $('#guessanswer').css('visibility','visible');
         $('#guessanswer').text("You Win!");
         $('#trophy').css('visibility','visible');
@@ -77,9 +81,9 @@ Game.prototype.checkGuess = function() {
 }
 
 
-function guessesRemaining(){
-    if (numberOfGuesses < 5) {
-        return (5-numberOfGuesses) + " guesses remaining!";    
+Game.prototype.guessesRemaining = function(){
+    if (this.numberOfGuesses < 5) {
+        return (5-this.numberOfGuesses) + " guesses remaining!";    
     } else {
         return "No Guesses Left";
     }
@@ -91,7 +95,7 @@ function guessesRemaining(){
 
 
 Game.prototype.provideHint = function() {
-    if (this.numberOfGuesses<4) {
+    if (this.numberOfGuesses<3) {
         $('guessanswer').css('visibility','visible');
         $('#guessanswer').text("Guess some more before you get a hint");
     } else {
@@ -122,17 +126,20 @@ $(document).ready(function() {
 
     $('#playagain').on('click', function () {
         newGame.playAgain();
+        $('#guess-counter').html('<h3>'+newGame.guessesRemaining()+'</h3>');
     });
 
     $('#num-input').keypress(function(e) {
         if(e.which == 13) {
             newGame.playersGuessGenerator();
             newGame.checkGuess();
+            $('#guess-counter').html('<h3>'+newGame.guessesRemaining()+'</h3>');
         }
     });
 
     $('.main-box').on('click', 'button', function () {
         newGame.playersGuessGenerator();
         newGame.checkGuess();
+        $('#guess-counter').html('<h3>'+newGame.guessesRemaining()+'</h3>');
     });
 });

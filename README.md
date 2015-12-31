@@ -10,3 +10,6 @@ Files created for project (in dist folder):
 - main.css
 
 
+JS/jQuery added.
+
+OO approach taken. No global variabales.
