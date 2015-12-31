@@ -108,7 +108,7 @@ Game.prototype.provideHint = function() {
 // Allow the "Player" to Play Again
 
 Game.prototype.playAgain = function() {
-    this.winningNumber = this.winningNumberGenerator();
+    this.winningNumberGenerator();
     this.numberOfGuesses = 0;
     this.guesses = [];
     $('#guessanswer').css('visibility','hidden');
