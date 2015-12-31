@@ -11,10 +11,13 @@ function Game() {
     this.guesses = [];
 }
 
+
+// Generate the Winning Number
 Game.prototype.winningNumberGenerator = function () {
     this.winningNumber = Math.floor(Math.random() * 100);
 }
 
+// Fetch the Players Guess
 Game.prototype.playersGuessGenerator = function () {
         var obj = document.getElementById('num-input');
         this.playersGuess = parseInt(obj.value);
@@ -24,24 +27,6 @@ Game.prototype.playersGuessGenerator = function () {
 
 /* **** Guessing Game Functions **** */
 
-// Generate the Winning Number
-
-// Added to new Game object
-//function generateWinningNumber(){
-//    return Math.floor(Math.random() * 100);
-//}
-
-//To be added to game play
-//winningNumber = generateWinningNumber();
-
-// Fetch the Players Guess
-
-// Added to Game object
-//function playersGuessSubmission(){
-//    var obj = document.getElementById('num-input');
-//        playersGuess = parseInt(obj.value);
-//        obj.value = '';
-//}
 
 // Determine if the next guess should be a lower or higher number
 
@@ -53,25 +38,8 @@ Game.prototype.lowerOrHigher = function () {
     }
 }
 
-//function lowerOrHigher(){
-//    if (playersGuess > winningNumber) {
-//        return "higher";
-//    } else {
-//        return "lower";
-//    }
-//}
 
-//function guessMessage(){
-//    if (Math.abs(playersGuess - winningNumber) > 20) {
-//        return "Your guess is " + lowerOrHigher() + " and more than 20 digits from the winning number";
-//    } else if (Math.abs(playersGuess - winningNumber) > 10) {
-//        return "Your guess is " + lowerOrHigher() + " and within 20 digits of the winning number";
-//    } else if (Math.abs(playersGuess - winningNumber) > 5) {
-//        return "Your guess is " + lowerOrHigher() + " and within 10 digits of the winning number";
-//    } else {
-//        return "Your guess is " + lowerOrHigher() + " and within 5 digits of the winning number";
-//    }
-//}
+//Generate message to display to player
 
 Game.prototype.guessMessage = function() {
     if (Math.abs(this.playersGuess - this.winningNumber) > 20) {
